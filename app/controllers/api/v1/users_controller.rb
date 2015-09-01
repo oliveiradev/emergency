@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user , only: [:show,:update,:destroy]
+  before_action :set_user , only: [:confirm_user,:show,:update,:destroy]
 
   def index
     @users = User.all
@@ -23,6 +23,22 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def not_checked_users
+    @users = User.where(checked: false)
+    render json: @users , status: :ok
+  end
+
+  def confirm_user
+      if @user.update(checked: true)
+        redirect_to api_v1_not_checked_users_path
+        return
+      else
+        render json: @user.errors , status: :bad_request
+        return
+      end
+      render json: 'Usuário não encontrado.' , status: :forbidden
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826175411) do
+ActiveRecord::Schema.define(version: 20150831155534) do
 
   create_table "occurrences", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150826175411) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id",     limit: 4
+    t.float    "lat",         limit: 24
+    t.float    "lng",         limit: 24
   end
 
   add_index "occurrences", ["user_id"], name: "index_occurrences_on_user_id", using: :btree
