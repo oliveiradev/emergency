@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+
+   namespace :api , defaults: {format: :json} do
+    namespace :v1 do
+      get '/not-checked-users' , to: 'users#not_checked_users'
+      get '/confirm-user/:id' , to: 'users#confirm_user'
+      resources :users
+      resources :occurrences
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
