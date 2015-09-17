@@ -2,11 +2,12 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user , only: [:confirm_user,:show,:update,:destroy]
 
   def index
-    @users = User.all
-    render json: @users
+    @users= User.all
+    render json: @users , status: :ok
   end
 
   def show
+    render json: @user , status: :ok
   end
 
   def create
@@ -20,9 +21,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    @user.update(set_params)
+    render json: @user , status: :ok
   end
 
   def destroy
+    @user.destroy
+    render json: '' , status: :no_content
   end
 
   def not_checked_users

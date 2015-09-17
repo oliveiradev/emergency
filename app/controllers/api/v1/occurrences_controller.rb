@@ -7,7 +7,7 @@ class Api::V1::OccurrencesController < ApplicationController
   end
 
   def show
-    render json: @occurence
+    render json: @occurrence , status: :ok
   end
 
   def show_geojson
@@ -17,25 +17,29 @@ class Api::V1::OccurrencesController < ApplicationController
   end
 
   def create
-    @occurence = Occurrence.new(set_params)
+    @occurrence = Occurrence.new(set_params)
 
-    if @occurence.save
+    if @occurrence.save
       render json: '' , status: :created
     else
-      render json: @occurence.errors , status: :bad_request
+      render json: @occurrence.errors , status: :bad_request
     end
   end
 
   def update
+    @occurrence.update(set_params)
+    render json: @occurrence , status: :ok
   end
 
   def destroy
+    @occurrence.destroy
+    render json: '' , status: :no_content
   end
 
   private
 
   def set_occurrence
-    @occurence = Occurrence.find(params[:id])
+    @occurrence = Occurrence.find(params[:id])
   end
 
   def prepare_geojson(occurrences)
@@ -58,6 +62,6 @@ class Api::V1::OccurrencesController < ApplicationController
   end
 
   def set_params
-    params.require(:occurrence).permit(:description , :pic , :user_id)
+    params.require(:occurrence).permit(:description , :pic , :user_id ,:lat ,:lng ,:pending)
   end
 end
