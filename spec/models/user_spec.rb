@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   it { expect(subject).to validate_presence_of(:password) }
   it { expect(subject).to validate_uniqueness_of(:cpf) }
 
-   it 'has a valid factory' do
+  it 'has a valid factory' do
     expect(build(:user)).to be_valid
   end
 end
