@@ -1,1 +1,1 @@
-College project
+College project in Rails
