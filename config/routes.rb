@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/not-checked-users' , to: 'users#not_checked_users'
       get '/confirm-user/:id' , to: 'users#confirm_user'
+      get '/geojson' , to: 'occurrences#show_geojson'
       resources :users
       resources :occurrences
     end

@@ -3,4 +3,5 @@ cache: bundler
 rvm:
   - 2.2.1
 before_script:
+  - cp config/database.travis.yml config/database.yml
   - mysql -e 'create database emergency_test;'

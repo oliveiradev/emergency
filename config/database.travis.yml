@@ -1,0 +1,4 @@
+test:
+  adapter: mysql2
+  database: emergency_test
+  username: travis

@@ -84,6 +84,10 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         expect(user_attributes).to eq(post_update_attributes)
       end
 
+      it "updates the requested user 2" do
+        expect(user_attributes).to eq(user)
+      end
+
       it "assigns the requested user as @user" do
         expect(assigns(:user)).to eq(user)
       end
