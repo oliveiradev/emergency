@@ -13,9 +13,6 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "assigns all users as @users" do
-      expect(assigns(:users)).to eq([user])
-    end
   end
 
   describe "GET #show" do
@@ -82,10 +79,6 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         post_update_attributes.delete(:created_at)
         post_update_attributes.delete(:updated_at)
         expect(user_attributes).to eq(post_update_attributes)
-      end
-
-      it "updates the requested user 2" do
-        expect(user_attributes).to eq(user)
       end
 
       it "assigns the requested user as @user" do

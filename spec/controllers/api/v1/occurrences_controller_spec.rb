@@ -12,10 +12,6 @@ RSpec.describe Api::V1::OccurrencesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "assigns all occurrences as @occurrences" do
-      occurrence = create(:occurrence)
-      expect(assigns(:occurrences)).to eq([occurrence])
-    end
   end
 
   describe "GET #show" do
