@@ -3,7 +3,7 @@ FactoryGirl.define do
     name {Faker::Name.name}
     email {Faker::Internet.free_email}
     cpf {Faker::Number.number(11).to_s}
-    birth {Faker::Date.between(2.days.ago, Date.today)}
+    birth {Faker::Date.between(20.days.ago, Time.zone.today)}
     password {Faker::Internet.password}
     checked false
 
