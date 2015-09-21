@@ -1,5 +1,5 @@
 class AddPendingToOccurrences < ActiveRecord::Migration
   def change
-    add_column :occurrences, :pending, :boolean , default: 0
+    add_column :occurrences, :pending, :boolean , default: 1
   end
 end
