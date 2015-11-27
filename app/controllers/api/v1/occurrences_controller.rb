@@ -3,7 +3,7 @@ class Api::V1::OccurrencesController < ApplicationController
 
   def index
     @occurrences = Occurrence.all
-    render json: @occurrences
+    render json: @occurrences.as_json(only: [:id,:description]) , root: false
   end
 
   def show
@@ -20,7 +20,7 @@ class Api::V1::OccurrencesController < ApplicationController
     @occurrence = Occurrence.new(set_params)
 
     if @occurrence.save
-      render json: '' , status: :created
+      render nothing: true , status: :created
     else
       render json: @occurrence.errors , status: :bad_request
     end
@@ -33,7 +33,7 @@ class Api::V1::OccurrencesController < ApplicationController
 
   def destroy
     @occurrence.destroy
-    render json: '' , status: :no_content
+    render nothing: true , status: :no_content
   end
 
   private
@@ -62,6 +62,10 @@ class Api::V1::OccurrencesController < ApplicationController
   end
 
   def set_params
-    params.require(:occurrence).permit(:description , :pic , :user_id ,:lat ,:lng ,:pending)
+    if params[:occurrence].blank?
+      params.permit(:description , :pic , :user_id ,:lat ,:lng ,:pending)
+    else
+      params.require(:occurrence).permit(:description , :pic , :user_id ,:lat ,:lng ,:pending)
+    end
   end
 end

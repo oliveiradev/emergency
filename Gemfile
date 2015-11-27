@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2' , '~> 0.3.18' , group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
 
+gem 'carrierwave', '~> 0.10.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -39,6 +41,8 @@ gem 'rack-cors' , :require => 'rack/cors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'railroady'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
