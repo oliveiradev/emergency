@@ -3,7 +3,7 @@ class Api::V1::OccurrencesController < ApplicationController
 
   def index
     @occurrences = Occurrence.all
-    render json: @occurrences.as_json(only: [:id,:description]) , root: false
+    render json: @occurrences
   end
 
   def show
@@ -17,6 +17,7 @@ class Api::V1::OccurrencesController < ApplicationController
   end
 
   def create
+
     @occurrence = Occurrence.new(set_params)
 
     if @occurrence.save
