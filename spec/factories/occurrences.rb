@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :occurrence do
     description {Faker::Lorem.sentence}
-    pic {Faker::Avatar.image}
+    pic nil
     user_id nil
     lat nil
     lng nil
